@@ -37,11 +37,11 @@ struct XPProgressBar: View {
                 HStack {
                     Text("\(earned) / \(required) XP")
                         .font(.caption2)
-                        .foregroundStyle(.gray)
+                        .foregroundColor(.gray)
                     Spacer()
                     Text("\(Int(progress * 100))%")
                         .font(.caption2)
-                        .foregroundStyle(.systemBlue)
+                        .foregroundColor(.systemBlue)
                 }
             }
         }

@@ -10,12 +10,12 @@ struct HabitBreakdownChartView: View {
                 .font(.caption)
                 .fontWeight(.heavy)
                 .fontDesign(.monospaced)
-                .foregroundStyle(.gray)
+                .foregroundColor(.gray)
 
             if data.isEmpty {
                 Text("No quest data available.")
                     .font(.caption)
-                    .foregroundStyle(.gray)
+                    .foregroundColor(.gray)
                     .padding(.vertical, 12)
             } else {
                 VStack(spacing: 10) {
@@ -23,12 +23,12 @@ struct HabitBreakdownChartView: View {
                         HStack(spacing: 10) {
                             Image(systemName: habit.icon)
                                 .font(.caption)
-                                .foregroundStyle(habit.category.color)
+                                .foregroundColor(habit.category.color)
                                 .frame(width: 20)
 
                             Text(habit.name)
                                 .font(.caption)
-                                .foregroundStyle(.white)
+                                .foregroundColor(.white)
                                 .lineLimit(1)
                                 .frame(width: 100, alignment: .leading)
 
@@ -48,7 +48,7 @@ struct HabitBreakdownChartView: View {
                             Text("\(Int(habit.completionRate * 100))%")
                                 .font(.caption2)
                                 .fontDesign(.monospaced)
-                                .foregroundStyle(rateColor(habit.completionRate))
+                                .foregroundColor(rateColor(habit.completionRate))
                                 .frame(width: 36, alignment: .trailing)
                         }
                     }

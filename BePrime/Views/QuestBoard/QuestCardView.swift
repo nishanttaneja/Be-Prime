@@ -11,7 +11,7 @@ struct QuestCardView: View {
                 // Icon
                 Image(systemName: item.habitIcon)
                     .font(.title2)
-                    .foregroundStyle(item.isCompleted ? .gray : item.category.color)
+                    .foregroundColor(item.isCompleted ? .gray : item.category.color)
                     .frame(width: 40, height: 40)
                     .background(
                         Circle()
@@ -22,7 +22,7 @@ struct QuestCardView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(item.habitName)
                         .font(.headline)
-                        .foregroundStyle(item.isCompleted ? .gray : .white)
+                        .foregroundColor(item.isCompleted ? .gray : .white)
                         .strikethrough(item.isCompleted, color: .gray)
 
                     HStack(spacing: 4) {
@@ -32,7 +32,7 @@ struct QuestCardView: View {
                             .font(.caption)
                             .fontDesign(.monospaced)
                     }
-                    .foregroundStyle(item.isCompleted ? .gray : .xpGold)
+                    .foregroundColor(item.isCompleted ? .gray : .xpGold)
                 }
 
                 Spacer()
@@ -51,7 +51,7 @@ struct QuestCardView: View {
                         Image(systemName: "checkmark")
                             .font(.caption)
                             .fontWeight(.bold)
-                            .foregroundStyle(.black)
+                            .foregroundColor(.black)
                     }
                 }
             }

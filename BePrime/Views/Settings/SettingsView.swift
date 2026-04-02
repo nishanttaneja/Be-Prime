@@ -53,7 +53,7 @@ struct SettingsView: View {
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .font(.caption)
-                                .foregroundStyle(.gray)
+                                .foregroundColor(.gray)
                         }
                     }
                     .tint(.white)
@@ -80,14 +80,14 @@ struct SettingsView: View {
                         Text("Version")
                         Spacer()
                         Text("1.0.0")
-                            .foregroundStyle(.gray)
+                            .foregroundColor(.gray)
                     }
                     HStack {
                         Text("Be Prime")
                         Spacer()
                         Text("Achieve Your Prime Self")
                             .font(.caption)
-                            .foregroundStyle(.systemBlue)
+                            .foregroundColor(.systemBlue)
                     }
                 }
                 .listRowBackground(Color.cardBackground)

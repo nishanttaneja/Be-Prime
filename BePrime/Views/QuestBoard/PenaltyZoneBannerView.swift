@@ -6,16 +6,16 @@ struct PenaltyZoneBannerView: View {
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundStyle(.penaltyRed)
+                .foregroundColor(.penaltyRed)
 
             Text("PENALTY ZONE")
                 .font(.caption)
                 .fontWeight(.heavy)
                 .fontDesign(.monospaced)
-                .foregroundStyle(.penaltyRed)
+                .foregroundColor(.penaltyRed)
 
             Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundStyle(.penaltyRed)
+                .foregroundColor(.penaltyRed)
         }
         .padding(.vertical, 6)
         .padding(.horizontal, 16)

@@ -33,21 +33,21 @@ struct DailyProgressRingView: View {
                 VStack(spacing: 0) {
                     Image(systemName: "checkmark.seal.fill")
                         .font(.title3)
-                        .foregroundStyle(.xpGreen)
+                        .foregroundColor(.xpGreen)
                     Text("CLEAR")
                         .font(.caption2)
                         .fontDesign(.monospaced)
-                        .foregroundStyle(.xpGreen)
+                        .foregroundColor(.xpGreen)
                 }
             } else {
                 VStack(spacing: 0) {
                     Text("\(completed)")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundStyle(.white)
+                        .foregroundColor(.white)
                     Text("/\(total)")
                         .font(.caption)
-                        .foregroundStyle(.gray)
+                        .foregroundColor(.gray)
                 }
             }
         }

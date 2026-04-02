@@ -34,7 +34,7 @@ struct SystemMessageView: View {
         Text(message.text)
             .font(.caption)
             .fontDesign(.monospaced)
-            .foregroundStyle(textColor)
+            .foregroundColor(textColor)
             .multilineTextAlignment(.center)
             .padding(.horizontal, 16)
             .padding(.vertical, 10)

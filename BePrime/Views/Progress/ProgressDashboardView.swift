@@ -82,11 +82,11 @@ struct ProgressDashboardView: View {
             Text(value)
                 .font(.headline)
                 .fontDesign(.monospaced)
-                .foregroundStyle(color)
+                .foregroundColor(color)
 
             Text(title)
                 .font(.caption2)
-                .foregroundStyle(.gray)
+                .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity)
     }

@@ -25,10 +25,10 @@ struct HabitFormView: View {
             Form {
                 Section("Quest Details") {
                     TextField("Quest Name", text: $name)
-                        .foregroundStyle(.white)
+                        .foregroundColor(.white)
 
                     Stepper("XP Reward: \(xpReward)", value: $xpReward, in: 25...200, step: 25)
-                        .foregroundStyle(.white)
+                        .foregroundColor(.white)
                 }
                 .listRowBackground(Color.cardBackground)
 
@@ -40,7 +40,7 @@ struct HabitFormView: View {
                         }
                     }
                     .pickerStyle(.menu)
-                    .foregroundStyle(.white)
+                    .foregroundColor(.white)
                 }
                 .listRowBackground(Color.cardBackground)
 

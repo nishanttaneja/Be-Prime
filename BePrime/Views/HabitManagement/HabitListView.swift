@@ -27,7 +27,7 @@ struct HabitListView: View {
                         showAddSheet = true
                     } label: {
                         Image(systemName: "plus.circle.fill")
-                            .foregroundStyle(.systemBlue)
+                            .foregroundColor(.systemBlue)
                     }
                 }
             }
@@ -71,23 +71,23 @@ struct HabitListView: View {
                 HStack(spacing: 12) {
                     Image(systemName: habit.icon)
                         .font(.title2)
-                        .foregroundStyle(habit.category.color)
+                        .foregroundColor(habit.category.color)
                         .frame(width: 36)
 
                     VStack(alignment: .leading, spacing: 2) {
                         Text(habit.name)
                             .font(.headline)
-                            .foregroundStyle(.white)
+                            .foregroundColor(.white)
                         Text("\(habit.xpReward) XP \u{2022} \(habit.category.displayName)")
                             .font(.caption)
-                            .foregroundStyle(.gray)
+                            .foregroundColor(.gray)
                     }
 
                     Spacer()
 
                     Image(systemName: "chevron.right")
                         .font(.caption)
-                        .foregroundStyle(.gray)
+                        .foregroundColor(.gray)
                 }
                 .listRowBackground(Color.cardBackground)
                 .contentShape(Rectangle())

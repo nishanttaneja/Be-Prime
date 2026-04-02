@@ -72,7 +72,7 @@ struct HunterCardView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .fontDesign(.monospaced)
-                        .foregroundStyle(.white)
+                        .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .onSubmit {
                             vm.updateHunterName(editedName)
@@ -84,7 +84,7 @@ struct HunterCardView: View {
                         isEditingName = false
                     } label: {
                         Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(.xpGreen)
+                            .foregroundColor(.xpGreen)
                     }
                 }
                 .padding(.horizontal, 40)
@@ -98,11 +98,11 @@ struct HunterCardView: View {
                             .font(.title2)
                             .fontWeight(.bold)
                             .fontDesign(.monospaced)
-                            .foregroundStyle(.white)
+                            .foregroundColor(.white)
 
                         Image(systemName: "pencil")
                             .font(.caption)
-                            .foregroundStyle(.gray)
+                            .foregroundColor(.gray)
                     }
                 }
             }
@@ -111,14 +111,14 @@ struct HunterCardView: View {
             Text(vm.rank.title)
                 .font(.subheadline)
                 .fontWeight(.semibold)
-                .foregroundStyle(vm.rank.color)
+                .foregroundColor(vm.rank.color)
 
             // Level + XP
             VStack(spacing: 6) {
                 Text("Level \(vm.level)")
                     .font(.headline)
                     .fontDesign(.monospaced)
-                    .foregroundStyle(.white)
+                    .foregroundColor(.white)
 
                 XPProgressBar(
                     earned: vm.xpProgress.earned,
@@ -130,7 +130,7 @@ struct HunterCardView: View {
                 Text("Total XP: \(vm.totalXP)")
                     .font(.caption)
                     .fontDesign(.monospaced)
-                    .foregroundStyle(.xpGold)
+                    .foregroundColor(.xpGold)
             }
         }
         .padding(20)
@@ -159,16 +159,16 @@ struct HunterCardView: View {
         VStack(spacing: 6) {
             Image(systemName: icon)
                 .font(.title3)
-                .foregroundStyle(color)
+                .foregroundColor(color)
 
             Text(value)
                 .font(.headline)
                 .fontDesign(.monospaced)
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
 
             Text(title)
                 .font(.caption2)
-                .foregroundStyle(.gray)
+                .foregroundColor(.gray)
                 .lineLimit(1)
         }
         .frame(maxWidth: .infinity)
@@ -186,18 +186,18 @@ struct HunterCardView: View {
     private func penaltyStatus(vm: HunterCardViewModel) -> some View {
         HStack(spacing: 10) {
             Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundStyle(.penaltyRed)
+                .foregroundColor(.penaltyRed)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text("PENALTY ZONE ACTIVE")
                     .font(.caption)
                     .fontWeight(.heavy)
                     .fontDesign(.monospaced)
-                    .foregroundStyle(.penaltyRed)
+                    .foregroundColor(.penaltyRed)
 
                 Text("Complete all daily quests to escape. XP halved.")
                     .font(.caption2)
-                    .foregroundStyle(.gray)
+                    .foregroundColor(.gray)
             }
 
             Spacer()
