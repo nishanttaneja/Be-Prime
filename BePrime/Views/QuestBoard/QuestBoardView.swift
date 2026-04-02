@@ -95,8 +95,8 @@ struct QuestBoardView: View {
     private func headerSection(vm: QuestBoardViewModel) -> some View {
         HStack(spacing: 20) {
             DailyProgressRingView(
-                completed: vm.todayRecord?.completedCount ?? 0,
-                total: vm.todayRecord?.totalHabitsAvailable ?? 0
+                completed: vm.questItems.filter(\.isCompleted).count,
+                total: vm.questItems.count
             )
 
             VStack(alignment: .leading, spacing: 8) {

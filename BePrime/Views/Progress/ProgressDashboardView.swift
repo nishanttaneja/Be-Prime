@@ -22,6 +22,7 @@ struct ProgressDashboardView: View {
             if viewModel == nil {
                 viewModel = ProgressViewModel(modelContext: modelContext)
             }
+            // Always reload data on appear — picks up quest completions from other tabs
             viewModel?.onAppear()
         }
     }

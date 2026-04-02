@@ -49,19 +49,23 @@ final class QuestBoardViewModel {
         DefaultHabitsProvider.seedDefaultHabits(modelContext: modelContext)
         self.profile = profile
 
-        // Daily reset
+        // Daily reset (also syncs any new/archived habits into today's record)
         let resetResult = DailyResetService.ensureTodayRecord(
             modelContext: modelContext,
             profile: profile
         )
 
         todayRecord = resetResult.todayRecord
-        penaltyApplied = resetResult.penaltyApplied
-        escapedPenaltyZone = resetResult.escapedPenaltyZone
 
-        if let penalty = resetResult.penaltyApplied, penalty.leveledDown {
-            showLevelDownOverlay = true
-            newLevel = penalty.newLevel
+        // Only show penalty overlays on actual new day transitions
+        if resetResult.isNewDay {
+            penaltyApplied = resetResult.penaltyApplied
+            escapedPenaltyZone = resetResult.escapedPenaltyZone
+
+            if let penalty = resetResult.penaltyApplied, penalty.leveledDown {
+                showLevelDownOverlay = true
+                newLevel = penalty.newLevel
+            }
         }
 
         loadQuests()
@@ -71,6 +75,7 @@ final class QuestBoardViewModel {
 
     func loadQuests() {
         guard let record = todayRecord else { return }
+        // Re-fetch the record's completions to pick up any newly synced habits
         questItems = record.completions
             .compactMap { completion in
                 guard let habit = completion.habit, !habit.isArchived else { return nil }
@@ -133,8 +138,9 @@ final class QuestBoardViewModel {
             record.completedCount += 1
             record.totalXPEarned += effectiveXP
 
-            // Check if all quests now complete
-            let allDone = record.completions.allSatisfy(\.isCompleted) && !record.completions.isEmpty
+            // Check if all active quests now complete (exclude archived habits)
+            let activeCompletions = record.completions.filter { $0.habit?.isArchived == false }
+            let allDone = !activeCompletions.isEmpty && activeCompletions.allSatisfy(\.isCompleted)
             if allDone {
                 record.allCompleted = true
                 if !isInPenaltyZone {
@@ -184,9 +190,12 @@ final class QuestBoardViewModel {
 
     private func updateSystemMessage() {
         guard let record = todayRecord else { return }
+        // Use questItems count as the live source of truth for active quests
+        let completedCount = questItems.filter(\.isCompleted).count
+        let totalCount = questItems.count
         systemMessage = SystemMessageProvider.message(
-            completedCount: record.completedCount,
-            totalCount: record.totalHabitsAvailable,
+            completedCount: completedCount,
+            totalCount: totalCount,
             currentStreak: currentStreak,
             isInPenaltyZone: isInPenaltyZone,
             penaltyApplied: penaltyApplied,

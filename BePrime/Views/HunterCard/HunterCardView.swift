@@ -24,6 +24,7 @@ struct HunterCardView: View {
             if viewModel == nil {
                 viewModel = HunterCardViewModel(modelContext: modelContext)
             }
+            // Always reload on appear — picks up XP/level changes from quest board
             viewModel?.onAppear()
         }
     }

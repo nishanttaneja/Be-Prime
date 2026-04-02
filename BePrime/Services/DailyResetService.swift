@@ -21,6 +21,8 @@ struct DailyResetService {
             predicate: #Predicate { $0.dateKey == todayKey }
         )
         if let existing = try? modelContext.fetch(descriptor).first {
+            // Sync habits — add completions for newly added habits, remove for archived ones
+            syncHabitsWithRecord(existing, modelContext: modelContext)
             return DailyResetResult(
                 todayRecord: existing,
                 penaltyApplied: nil,
@@ -127,6 +129,45 @@ struct DailyResetService {
             escapedPenaltyZone: escapedPenaltyZone,
             isNewDay: true
         )
+    }
+
+    /// Sync today's record with current active habits:
+    /// - Add HabitCompletion for any new active habit not yet in today's record
+    /// - Remove HabitCompletion for any archived habit (only if not yet completed)
+    /// - Update totalHabitsAvailable to reflect current active count
+    static func syncHabitsWithRecord(_ record: DailyRecord, modelContext: ModelContext) {
+        let habitDescriptor = FetchDescriptor<Habit>(
+            predicate: #Predicate { $0.isArchived == false }
+        )
+        let activeHabits = (try? modelContext.fetch(habitDescriptor)) ?? []
+        let activeHabitIDs = Set(activeHabits.map(\.id))
+
+        // Find which habits already have completions in today's record
+        let existingHabitIDs = Set(record.completions.compactMap { $0.habit?.id })
+
+        // Add completions for newly added habits
+        for habit in activeHabits where !existingHabitIDs.contains(habit.id) {
+            let completion = HabitCompletion(habit: habit, dailyRecord: record)
+            modelContext.insert(completion)
+        }
+
+        // Remove completions for archived habits (only uncompleted ones)
+        for completion in record.completions {
+            guard let habit = completion.habit else { continue }
+            if !activeHabitIDs.contains(habit.id) && !completion.isCompleted {
+                modelContext.delete(completion)
+            }
+        }
+
+        // Update counts
+        let activeCompletions = record.completions.filter { completion in
+            guard let habit = completion.habit else { return false }
+            return activeHabitIDs.contains(habit.id)
+        }
+        record.totalHabitsAvailable = activeHabits.count
+        record.completedCount = activeCompletions.filter(\.isCompleted).count
+        record.allCompleted = record.completedCount == record.totalHabitsAvailable
+            && record.totalHabitsAvailable > 0
     }
 
     private static func fetchRecentDailyXP(modelContext: ModelContext, days: Int) -> [Int] {
