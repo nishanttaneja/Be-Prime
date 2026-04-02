@@ -107,8 +107,8 @@
 		081D3D98CD98455B761D796A /* SystemWindowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemWindowModifier.swift; sourceTree = "<group>"; };
 		059BF9197A5A915F74D2D4C4 /* XPProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPProgressBar.swift; sourceTree = "<group>"; };
 		63D5FA293E95BB8ACE5985A2 /* PowerLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerLevelView.swift; sourceTree = "<group>"; };
-		F983357AA9FE125430CC6F76 /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date+Helpers.swift; sourceTree = "<group>"; };
-		4E198C1519F8DA43AFB4BCF0 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color+Theme.swift; sourceTree = "<group>"; };
+		F983357AA9FE125430CC6F76 /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
+		4E198C1519F8DA43AFB4BCF0 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		4D8AAAAA5C2182ACCF51C9C2 /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
 		24FD725CD23ED380DF34E5F1 /* GamificationEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamificationEngineTests.swift; sourceTree = "<group>"; };
 		C8940D80AB28FA728BC0F945 /* PenaltyEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenaltyEngineTests.swift; sourceTree = "<group>"; };
@@ -462,7 +462,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSTCOMPILER_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
