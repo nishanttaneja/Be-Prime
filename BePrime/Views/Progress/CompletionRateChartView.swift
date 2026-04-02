@@ -11,12 +11,12 @@ struct CompletionRateChartView: View {
                 .font(.caption)
                 .fontWeight(.heavy)
                 .fontDesign(.monospaced)
-                .foregroundColor(.gray)
+                .foregroundStyle(.gray)
 
             if data.isEmpty {
                 Text("No data yet. Complete quests to see progress.")
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
                     .frame(height: 200)
                     .frame(maxWidth: .infinity)
             } else {
@@ -37,7 +37,7 @@ struct CompletionRateChartView: View {
                             if let v = value.as(Double.self) {
                                 Text("\(Int(v))%")
                                     .font(.caption2)
-                                    .foregroundColor(.gray)
+                                    .foregroundStyle(.gray)
                             }
                         }
                     }

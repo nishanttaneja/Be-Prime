@@ -23,7 +23,7 @@ struct QuestBoardView: View {
                         showHabitManagement = true
                     } label: {
                         Image(systemName: "list.bullet.rectangle")
-                            .foregroundColor(.systemBlue)
+                            .foregroundStyle(.systemBlue)
                     }
                 }
             }
@@ -106,7 +106,7 @@ struct QuestBoardView: View {
                         .font(.caption)
                         .fontWeight(.heavy)
                         .fontDesign(.monospaced)
-                        .foregroundColor(.black)
+                        .foregroundStyle(.black)
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
                         .background(
@@ -116,7 +116,7 @@ struct QuestBoardView: View {
                     Text("Lv. \(vm.currentLevel)")
                         .font(.headline)
                         .fontDesign(.monospaced)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                 }
 
                 // XP bar
@@ -135,7 +135,7 @@ struct QuestBoardView: View {
                     Text("+\(vm.dailyXPEarned) XP")
                         .font(.caption)
                         .fontDesign(.monospaced)
-                        .foregroundColor(.xpGold)
+                        .foregroundStyle(.xpGold)
                 }
             }
         }

@@ -22,7 +22,7 @@ struct LevelUpOverlayView: View {
                     .font(.title)
                     .fontWeight(.black)
                     .fontDesign(.monospaced)
-                    .foregroundColor(isLevelDown ? .penaltyRed : .xpGold)
+                    .foregroundStyle(isLevelDown ? .penaltyRed : .xpGold)
                     .shadow(color: isLevelDown ? .penaltyGlow : .xpGold.opacity(0.5), radius: 12)
                     .scaleEffect(showContent ? 1 : 0.3)
                     .opacity(showContent ? 1 : 0)
@@ -30,7 +30,7 @@ struct LevelUpOverlayView: View {
                 // Level number
                 Text("Lv. \(level)")
                     .font(.system(size: 64, weight: .heavy, design: .monospaced))
-                    .foregroundColor(isLevelDown ? .penaltyRed : .systemBlue)
+                    .foregroundStyle(isLevelDown ? .penaltyRed : .systemBlue)
                     .shadow(color: isLevelDown ? .penaltyGlow : .systemGlow, radius: 16)
                     .scaleEffect(showContent ? 1 : 0.5)
                     .opacity(showContent ? 1 : 0)
@@ -41,13 +41,13 @@ struct LevelUpOverlayView: View {
                         Text(rank.title)
                             .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundColor(rank.color)
+                            .foregroundStyle(rank.color)
                             .shadow(color: rank.glowColor, radius: 8)
 
                         Text(rank.rankUpQuote)
                             .font(.subheadline)
                             .italic()
-                            .foregroundColor(.white.opacity(0.8))
+                            .foregroundStyle(.white.opacity(0.8))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 32)
                     }
@@ -59,7 +59,7 @@ struct LevelUpOverlayView: View {
                     Text("[System] Pain is the catalyst for growth. Rise again.")
                         .font(.subheadline)
                         .fontDesign(.monospaced)
-                        .foregroundColor(.penaltyRed.opacity(0.8))
+                        .foregroundStyle(.penaltyRed.opacity(0.8))
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
                         .opacity(showDetails ? 1 : 0)
@@ -68,7 +68,7 @@ struct LevelUpOverlayView: View {
                 // Dismiss hint
                 Text("Tap to continue")
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
                     .padding(.top, 16)
                     .opacity(showDetails ? 1 : 0)
             }

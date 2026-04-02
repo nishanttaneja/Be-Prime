@@ -43,14 +43,14 @@ struct StreakFlameView: View {
         HStack(spacing: 4) {
             Image(systemName: flameIcon)
                 .font(.system(size: flameSize))
-                .foregroundColor(flameColor)
+                .foregroundStyle(flameColor)
                 .shadow(color: glowColor, radius: streak >= 7 ? 8 : 0)
                 .symbolEffect(.pulse, isActive: streak >= 14)
 
             Text("\(streak)")
                 .font(.headline)
                 .fontDesign(.monospaced)
-                .foregroundColor(flameColor)
+                .foregroundStyle(flameColor)
         }
     }
 }

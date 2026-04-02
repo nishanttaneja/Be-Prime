@@ -23,7 +23,7 @@ struct RankBadgeView: View {
             // Rank letter
             Text(rank.shortTitle)
                 .font(.system(size: size * 0.4, weight: .black, design: .monospaced))
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
                 .shadow(color: .black.opacity(0.5), radius: 2)
         }
         .onAppear {

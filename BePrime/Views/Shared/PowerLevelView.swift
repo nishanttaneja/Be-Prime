@@ -11,11 +11,11 @@ struct PowerLevelView: View {
                 .font(.caption2)
                 .fontWeight(.semibold)
                 .fontDesign(.monospaced)
-                .foregroundColor(.gray)
+                .foregroundStyle(.gray)
 
             Text("\(displayedValue)")
                 .font(.system(size: 32, weight: .heavy, design: .monospaced))
-                .foregroundColor(.systemBlue)
+                .foregroundStyle(.systemBlue)
                 .shadow(color: .systemGlow, radius: 8)
                 .contentTransition(.numericText(value: Double(displayedValue)))
         }

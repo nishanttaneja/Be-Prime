@@ -10,12 +10,12 @@ struct AchievementGridView: View {
                 .font(.caption)
                 .fontWeight(.heavy)
                 .fontDesign(.monospaced)
-                .foregroundColor(.gray)
+                .foregroundStyle(.gray)
 
             if unlocked.isEmpty && locked.isEmpty {
                 Text("No achievements yet. Begin your journey, Hunter.")
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
                     .padding(.vertical, 8)
             } else {
                 LazyVGrid(columns: [
@@ -38,7 +38,7 @@ struct AchievementGridView: View {
         VStack(spacing: 6) {
             Image(systemName: achievement.icon)
                 .font(.title2)
-                .foregroundColor(.xpGold)
+                .foregroundStyle(.xpGold)
                 .frame(width: 40, height: 40)
                 .background(
                     Circle()
@@ -48,12 +48,12 @@ struct AchievementGridView: View {
             Text(achievement.name)
                 .font(.caption2)
                 .fontWeight(.semibold)
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
                 .lineLimit(1)
 
             Text(achievement.detail)
                 .font(.caption2)
-                .foregroundColor(.gray)
+                .foregroundStyle(.gray)
                 .lineLimit(1)
         }
         .frame(maxWidth: .infinity)
@@ -72,7 +72,7 @@ struct AchievementGridView: View {
         VStack(spacing: 6) {
             Image(systemName: "lock.fill")
                 .font(.title2)
-                .foregroundColor(.gray.opacity(0.4))
+                .foregroundStyle(.gray.opacity(0.4))
                 .frame(width: 40, height: 40)
                 .background(
                     Circle()
@@ -82,12 +82,12 @@ struct AchievementGridView: View {
             Text(def.title)
                 .font(.caption2)
                 .fontWeight(.semibold)
-                .foregroundColor(.gray.opacity(0.5))
+                .foregroundStyle(.gray.opacity(0.5))
                 .lineLimit(1)
 
             Text(def.description)
                 .font(.caption2)
-                .foregroundColor(.gray.opacity(0.3))
+                .foregroundStyle(.gray.opacity(0.3))
                 .lineLimit(1)
         }
         .frame(maxWidth: .infinity)
