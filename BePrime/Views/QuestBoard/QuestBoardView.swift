@@ -3,6 +3,7 @@ import SwiftData
 
 struct QuestBoardView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel: QuestBoardViewModel?
     @State private var showHabitManagement = false
 
@@ -40,6 +41,11 @@ struct QuestBoardView: View {
                 viewModel = QuestBoardViewModel(modelContext: modelContext)
             }
             viewModel?.onAppear()
+        }
+        // Re-run the daily reset when the app comes back to the foreground: onAppear alone
+        // misses an app that was left open across midnight
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { viewModel?.onAppear() }
         }
         .overlay {
             if let vm = viewModel {

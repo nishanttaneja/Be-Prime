@@ -50,7 +50,8 @@ final class ProgressViewModel {
             sortBy: [SortDescriptor(\.dateKey)]
         )
         let records = (try? modelContext.fetch(descriptor)) ?? []
-        let recordMap = Dictionary(uniqueKeysWithValues: records.map { ($0.dateKey, $0) })
+        // Tolerate a duplicate dateKey instead of crashing the Progress tab
+        let recordMap = Dictionary(records.map { ($0.dateKey, $0) }, uniquingKeysWith: { first, _ in first })
 
         var data: [ChartDataPoint] = []
         var totalRate: Double = 0

@@ -112,11 +112,12 @@ final class QuestBoardViewModel {
             record.completedCount -= 1
             record.totalXPEarned -= xpToRemove
 
-            // If was all complete, remove the dungeon bonus
-            if wasAllComplete {
-                let bonus = calculateDungeonBonus()
+            // Remove whatever bonus was actually credited (none in Penalty Zone)
+            if wasAllComplete, record.bonusXPAwarded > 0 {
+                let bonus = record.bonusXPAwarded
                 profile.totalXP = max(0, profile.totalXP - bonus)
-                record.totalXPEarned -= bonus
+                record.totalXPEarned = max(0, record.totalXPEarned - bonus)
+                record.bonusXPAwarded = 0
             }
 
             record.allCompleted = false
@@ -143,10 +144,12 @@ final class QuestBoardViewModel {
             let allDone = !activeCompletions.isEmpty && activeCompletions.allSatisfy(\.isCompleted)
             if allDone {
                 record.allCompleted = true
-                if !isInPenaltyZone {
+                // Bonus is credited once per day, even if a habit is added after a clear
+                if !isInPenaltyZone, record.bonusXPAwarded == 0 {
                     let bonus = calculateDungeonBonus()
                     profile.totalXP += bonus
                     record.totalXPEarned += bonus
+                    record.bonusXPAwarded = bonus
                 }
             }
         }

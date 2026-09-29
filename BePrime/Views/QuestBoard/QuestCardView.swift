@@ -59,6 +59,9 @@ struct QuestCardView: View {
             .systemWindow(penaltyZone: isInPenaltyZone)
         }
         .buttonStyle(.plain)
-        .sensoryFeedback(item.isCompleted ? .impact(flexibility: .soft) : .success, trigger: item.isCompleted)
+        .sensoryFeedback(trigger: item.isCompleted) { _, isCompleted in
+            guard UserDefaults.standard.object(forKey: "hapticFeedbackEnabled") as? Bool ?? true else { return nil }
+            return isCompleted ? .success : .impact(flexibility: .soft)
+        }
     }
 }

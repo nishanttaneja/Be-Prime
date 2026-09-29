@@ -79,7 +79,7 @@ struct SettingsView: View {
                     HStack {
                         Text("Version")
                         Spacer()
-                        Text("1.0.0")
+                        Text(Bundle.main.appVersionString)
                             .foregroundColor(.gray)
                     }
                     HStack {
@@ -108,5 +108,14 @@ struct SettingsView: View {
                 Text("[System] WARNING: All hunter data will be permanently erased. Your rank, level, XP, streaks, and achievements will be lost forever. This cannot be undone.")
             }
         }
+    }
+}
+
+private extension Bundle {
+    /// "1.0 (12)" from the Info.plist so Settings never drifts from the shipped build
+    var appVersionString: String {
+        let version = infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
+        let build = infoDictionary?["CFBundleVersion"] as? String ?? "?"
+        return "\(version) (\(build))"
     }
 }

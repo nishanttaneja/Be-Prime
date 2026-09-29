@@ -11,6 +11,8 @@ final class DailyRecord {
     var xpPenalty: Int
     var allCompleted: Bool
     var wasInPenaltyZone: Bool
+    /// Bonus actually credited for clearing the day; undo removes exactly this, never a recomputed value.
+    var bonusXPAwarded: Int = 0
 
     @Relationship(deleteRule: .cascade, inverse: \HabitCompletion.dailyRecord)
     var completions: [HabitCompletion]
@@ -24,6 +26,7 @@ final class DailyRecord {
         self.xpPenalty = 0
         self.allCompleted = false
         self.wasInPenaltyZone = false
+        self.bonusXPAwarded = 0
         self.completions = []
     }
 }
